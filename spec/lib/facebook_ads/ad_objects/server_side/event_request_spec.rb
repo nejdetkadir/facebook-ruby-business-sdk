@@ -190,7 +190,6 @@ RSpec.describe 'FacebookAds::ServerSide::EventRequest' do
         }
         params = event_request.get_params
         params[:access_token] = access_token
-        params[:appsecret_proof] = FacebookAds::ServerSide::HttpUtil.appsecret_proof(appsecret, access_token)
         params[:data] = events.map(&:normalize)
 
         expect(mock_http_service_client).to receive(:execute).with(
